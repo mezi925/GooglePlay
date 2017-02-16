@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.example.mezi925.googleplay.adapter.MainPagerAdapter;
 import com.example.mezi925.googleplay.ui.activity.BaseActivity;
@@ -64,4 +65,22 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
     }
 
+    /**
+     * 选项被点击时拉出drawerLayout
+     *
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // 将抽屉点击事件传递给ActionBarToggle
+                actionBarDrawerToggle.onOptionsItemSelected(item);
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
